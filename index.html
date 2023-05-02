@@ -22,11 +22,13 @@
     </div>
     <div class="soru-secmeli-blok">
       <div class="soru-baslik">
-        <span id="soru-numarasi">1.</span>
+        <span class="soru-numarasi" id="soru-num-int">1</span>
         <span id="soru">Sorunun içeriği ?</span> <br />
       </div>
-      <div class="cevaplar">
-        <input type="radio" name="A" value="a" id="radio1" /> A &nbsp Option A
+      <div class="cevaplar" id="cevap-id">
+        <input type="radio" name="A" value="a" id="radio1" />
+        A &nbsp Option A
+
         <br />
         <input type="radio" name="A" value="b" id="radio2" /> B &nbsp Option B
         <br />
@@ -34,12 +36,15 @@
         <br />
         <input type="radio" name="A" value="d" id="radio4" /> D &nbsp Option D
         <br />
+        <input type="radio" name="A" value="e" id="radio5" /> E &nbsp Option E
       </div>
     </div>
 
     <div class="ileri-geri-buttonlar">
-      <div class="geri-button"><button>Önceki Soru</button></div>
-      <div class="ileri-button"><button>Sonraki Soru</button></div>
+      <div id="geri-button"><button>Önceki Soru</button></div>
+      <div id="ileri-button">
+        <button onclick="nextQuestion()">Sonraki Soru</button>
+      </div>
     </div>
     <div class="soru-uclu-soru"></div>
     <script src="script.js"></script>

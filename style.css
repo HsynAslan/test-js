@@ -14,8 +14,19 @@
   margin-left: 2%;
   margin-bottom: 2%;
 }
-body span {
-  font-size: xx-large;
+.soru-numarasi {
+  font-weight: 800;
+  font-size: 20px;
+}
+#soru {
+  font-size: 17px;
+  font-weight: 500;
+  font-family: "Times New Roman", Times, serif;
+}
+.cevaplar input {
+  margin-bottom: 3%;
+  margin-right: 2%;
+  cursor: pointer;
 }
 .ileri-geri-buttonlar {
   width: 70%;
