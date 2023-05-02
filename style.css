@@ -1,0 +1,51 @@
+.soru-secmeli-blok {
+  border: 5px;
+  width: 70%;
+  height: auto;
+  background-color: bisque;
+  margin-top: 7%;
+  border: solid 1px;
+  margin-left: 1%;
+}
+.soru-baslik {
+  padding: 10px;
+}
+.cevaplar {
+  margin-left: 2%;
+  margin-bottom: 2%;
+}
+body span {
+  font-size: xx-large;
+}
+.ileri-geri-buttonlar {
+  width: 70%;
+  margin-left: 1%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1%;
+}
+.sorular-tablo {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: antiquewhite;
+  width: 20%;
+  height: auto;
+}
+#tablo-header {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+.sorular-tablo-buttons {
+  padding: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.sorular-button {
+  width: 20%;
+  margin-right: 1px;
+  margin-bottom: 1%;
+}
