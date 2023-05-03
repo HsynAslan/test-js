@@ -17,7 +17,9 @@
     <div class="sorular-tablo">
       <p id="tablo-header">Sorular</p>
       <div class="sorular-tablo-buttons">
-        <button id="soru1" class="sorular-button">1</button>
+        <div id="button-container">
+          <!-- <button id="soru1" class="sorular-button">1</button> -->
+        </div>
       </div>
     </div>
     <div class="soru-secmeli-blok">
@@ -26,25 +28,76 @@
         <span id="soru">Sorunun içeriği ?</span> <br />
       </div>
       <div class="cevaplar" id="cevap-id">
-        <input type="radio" name="A" value="a" id="radio1" />
-        A &nbsp Option A
-
+        <div class="herCevap">
+          <input type="radio" name="A" value="a" id="radio1" />
+          <p class="cevap-class" id="cevap1HTML">A &nbsp Option A</p>
+        </div>
         <br />
-        <input type="radio" name="A" value="b" id="radio2" /> B &nbsp Option B
+        <div class="herCevap">
+          <input type="radio" name="A" value="b" id="radio2" />
+          <p class="cevap-class" id="cevap2HTML">B &nbsp Option B</p>
+        </div>
         <br />
-        <input type="radio" name="A" value="c" id="radio3" /> C &nbsp Option C
+        <div class="herCevap">
+          <input type="radio" name="A" value="c" id="radio3" />
+          <p class="cevap-class" id="cevap3HTML">C &nbsp Option C</p>
+        </div>
         <br />
-        <input type="radio" name="A" value="d" id="radio4" /> D &nbsp Option D
+        <div class="herCevap">
+          <input type="radio" name="A" value="d" id="radio4" />
+          <p class="cevap-class" id="cevap4HTML">D &nbsp Option D</p>
+        </div>
         <br />
-        <input type="radio" name="A" value="e" id="radio5" /> E &nbsp Option E
+        <div class="herCevap">
+          <input type="radio" name="A" value="e" id="radio5" />
+          <p class="cevap-class" id="cevap5HTML">E &nbsp Option E</p>
+        </div>
       </div>
     </div>
 
     <div class="ileri-geri-buttonlar">
-      <div id="geri-button"><button>Önceki Soru</button></div>
+      <div id="geri-button">
+        <button onclick="backQuestion()">Önceki Soru</button>
+      </div>
       <div id="ileri-button">
         <button onclick="nextQuestion()">Sonraki Soru</button>
       </div>
+    </div>
+    <div class="soru-ekleme-cikarma">
+      <p class="basliklar">Soru Ekleme</p>
+      <div>
+        <label class="labelText mb-4">Soru Giriniz...</label>
+        <input type="text" id="inputQuestion" maxlength="100" />
+      </div>
+      <div>
+        <label class="labelText">A Şıkkı ...</label>
+        <input type="text" id="inputA" maxlength="100" />
+      </div>
+      <div>
+        <label class="labelText">B Şıkkı ...</label>
+        <input type="text" id="inputB" maxlength="100" />
+      </div>
+      <div>
+        <label class="labelText">C Şıkkı ...</label>
+        <input type="text" id="inputC" maxlength="100" />
+      </div>
+      <div>
+        <label class="labelText">D Şıkkı ...</label>
+        <input type="text" id="inputD" maxlength="100" />
+      </div>
+      <div>
+        <label class="labelText">E Şıkkı ...</label>
+        <input type="text" id="inputE" maxlength="100" />
+      </div>
+      <div class="eklemeButton">
+        <button onclick="soruEkleme()">Soruyu Kaydet</button>
+      </div>
+    </div>
+    <div class="soruCikar">
+      <p class="basliklar">Soru Çıkarma</p>
+      <label class="labelText mt-5">Çıkarmak İstediğiniz Soruyu Seçiniz</label>
+      <input type="number" id="SoruCikarma" name="tentacles" min="1" />
+      <button class="eklemeButton">Çıkart</button>
     </div>
     <div class="soru-uclu-soru"></div>
     <script src="script.js"></script>

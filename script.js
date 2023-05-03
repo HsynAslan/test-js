@@ -10,15 +10,29 @@ window.onload = function () {
     document.getElementById("radio1").nextSibling.innerHTML =
       sorular[0].aciklama;
     console.log(inputCount);
+
+    document.getElementById("soru-num-int").innerHTML = 1;
+    document.getElementById("soru").innerHTML = sorular[1].aciklama;
+
+    document.getElementById("cevap1HTML").innerHTML = sorular[0].cevap1;
+
+    document.getElementById("cevap2HTML").innerHTML = sorular[0].cevap2;
+
+    document.getElementById("cevap3HTML").innerHTML = sorular[0].cevap3;
+
+    document.getElementById("cevap4HTML").innerHTML = sorular[0].cevap4;
+
+    document.getElementById("cevap5HTML").innerHTML = sorular[0].cevap5;
+    myFunction(countQuestions);
   }
 };
 
 let sorular = [
   {
     numara: 1,
-    aciklama: "JavaScript'te sözlük yapısı nasıl kullanılır?",
-    cevap1: "afad",
-    cevap2: "afad2",
+    aciklama: "1.soru içeriği",
+    cevap1: "1.afad",
+    cevap2: "1.afad2",
     cevap3: "afad3",
     cevap4: "afad4",
     cevap5: "afad5",
@@ -27,8 +41,8 @@ let sorular = [
   {
     numara: 2,
     aciklama: "JavaScript'te sözlük yapısı naasdadsıl kullanılır?",
-    cevap1: "afadadsac",
-    cevap2: "afadadsf2",
+    cevap1: "2.afadadsac",
+    cevap2: "2.afadadsf2",
     cevap3: "afadczx<c3",
     cevap4: "afadad4",
     cevap5: "afadc<5",
@@ -37,15 +51,25 @@ let sorular = [
   {
     numara: 3,
     aciklama: "JavaScript'te sözlük yapısı nasıl kullanılır33333?",
-    cevap1: "afad--",
-    cevap2: "afad2--",
+    cevap1: "3.afad--",
+    cevap2: "3.afad2--",
     cevap3: "afad3--",
     cevap4: "afad4--",
     cevap5: "afad5--",
     cevap: "e",
   },
+  {
+    numara: 4,
+    aciklama: "4.soru ?",
+    cevap1: "4.a şıkkı",
+    cevap2: "4fafaf",
+    cevap3: "fasfaf",
+    cevap4: "dfafaa",
+    cevap5: "qadD",
+    cevap: "a",
+  },
 ];
-
+var countQuestions = sorular.length;
 // console.log(sorular[0].numara); // 1
 // console.log(sorular[1].aciklama); // JavaScript'te döngüler nasıl kullanılır?
 // console.log(sorular[2].cevap); // JavaScript'te fonksiyonlar, 'function' anahtar kelimesi ile tanımlanır ve parametreler ve bir kod bloğu içerir.
@@ -63,20 +87,64 @@ function nextQuestion() {
 
   screenUpdate(indexSoruNumarasi);
 }
+
+function backQuestion() {
+  indexSoruNumarasi--;
+  if (indexSoruNumarasi < 1) {
+    indexSoruNumarasi = sorular.length; // başa dönüldü
+  }
+
+  screenUpdate(indexSoruNumarasi);
+}
 function screenUpdate(soruNumber) {
   // ekranda değişiklikler burda yapılacak
 
   document.getElementById("soru-num-int").innerHTML = soruNumber;
   document.getElementById("soru").innerHTML = sorular[soruNumber - 1].aciklama;
 
-  document.getElementById("radio1").nextSibling.nextSibling.value =
+  // document.getElementById("radio1").nextSibling.nextSibling.value =
+  //   sorular[soruNumber - 1].cevap1;
+
+  document.getElementById("cevap1HTML").innerHTML =
     sorular[soruNumber - 1].cevap1;
 
-  console.log(document.getElementById("radio1").nextSibling.nextSibling);
-  console.log(JSON.stringify(sorular[soruNumber - 1].cevap1));
+  document.getElementById("cevap2HTML").innerHTML =
+    sorular[soruNumber - 1].cevap2;
+
+  document.getElementById("cevap3HTML").innerHTML =
+    sorular[soruNumber - 1].cevap3;
+
+  document.getElementById("cevap4HTML").innerHTML =
+    sorular[soruNumber - 1].cevap4;
+
+  document.getElementById("cevap5HTML").innerHTML =
+    sorular[soruNumber - 1].cevap5;
+
+  // JSON.stringify(
+  //   sorular[soruNumber - 1].cevap + "a"
+  // );
 
   // document.getElementById("radio1").nextSibling =
   //   sorular[soruNumber - 1].cevap1;
 
   // en son cevabı kaydedip sağ üste kaydetmek lazım ve clear lamak lazım burda !!
+}
+
+function myFunction(e) {
+  for (let i = 1; i < e + 1; i++) {
+    let newBtn = document.createElement("button");
+    newBtn.innerText = i;
+    newBtn.classList.add("sorular-button"); // Burada sorular-button sınıfı ekleniyor.
+
+    newBtn.onclick = function () {
+      screenUpdate(i);
+    };
+
+    document.querySelector("#button-container").appendChild(newBtn);
+  }
+}
+
+function soruEkleme() {
+  var girdiSoru = document.getElementById("inputQuestion");
+  console.log(girdiSoru);
 }
