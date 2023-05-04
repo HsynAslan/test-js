@@ -1,6 +1,8 @@
 // document.getElementById("radio1").nextSibling;
 var inputCount;
 var indexSoruNumarasi = document.getElementById("soru-num-int").innerHTML;
+var cevapList = ["a", "b", "c", "d", "e"];
+var puan = 0;
 window.onload = function () {
   if (indexSoruNumarasi == 1) {
     document.getElementById("geri-button").disabled = true;
@@ -30,42 +32,105 @@ window.onload = function () {
 let sorular = [
   {
     numara: 1,
-    aciklama: "1.soru içeriği",
-    cevap1: "1.afad",
-    cevap2: "1.afad2",
-    cevap3: "afad3",
-    cevap4: "afad4",
-    cevap5: "afad5",
-    cevap: "e",
+    aciklama: "JavaScript'te hangi metodla dizinin sonuna eleman eklenir?",
+    cevap1: "push()",
+    cevap2: "append()",
+    cevap3: "concat()",
+    cevap4: "join()",
+    cevap5: "slice()",
+    cevap: "a",
   },
   {
     numara: 2,
-    aciklama: "JavaScript'te sözlük yapısı naasdadsıl kullanılır?",
-    cevap1: "2.afadadsac",
-    cevap2: "2.afadadsf2",
-    cevap3: "afadczx<c3",
-    cevap4: "afadad4",
-    cevap5: "afadc<5",
-    cevap: "e",
-  },
-  {
-    numara: 3,
-    aciklama: "JavaScript'te sözlük yapısı nasıl kullanılır33333?",
-    cevap1: "3.afad--",
-    cevap2: "3.afad2--",
-    cevap3: "afad3--",
-    cevap4: "afad4--",
-    cevap5: "afad5--",
-    cevap: "e",
+    aciklama: "JavaScript'te hangi anahtar kelime ile değişken tanımlanır?",
+    cevap1: "let",
+    cevap2: "const",
+    cevap3: "var",
+    cevap4: "define",
+    cevap5: "create",
+    cevap: "b",
   },
   {
     numara: 4,
-    aciklama: "4.soru ?",
-    cevap1: "4.a şıkkı",
-    cevap2: "4fafaf",
-    cevap3: "fasfaf",
-    cevap4: "dfafaa",
-    cevap5: "qadD",
+    aciklama: "Hangi metod bir dizinin sonuna yeni bir eleman ekler?",
+    cevap1: "unshift()",
+    cevap2: "pop()",
+    cevap3: "push()",
+    cevap4: "shift()",
+    cevap5: "splice()",
+    cevap: "c",
+  },
+  {
+    numara: 4,
+    aciklama: "JavaScript'te hangi metodla dizinin son elemanı silinir?",
+    cevap1: "pop()",
+    cevap2: "shift()",
+    cevap3: "push()",
+    cevap4: "unshift()",
+    cevap5: "concat()",
+    cevap: "a",
+  },
+  {
+    numara: 5,
+    aciklama:
+      "CSS'te öğeler arasındaki boşlukları azaltmak için hangi özellik kullanılır?",
+    cevap1: "padding",
+    cevap2: "margin",
+    cevap3: "border",
+    cevap4: "spacing",
+    cevap5: "height",
+    cevap: "b",
+  },
+  {
+    numara: 16,
+    aciklama: "Hangi ifade bir JavaScript döngüsüdür?",
+    cevap1: "if...else",
+    cevap2: "try...catch",
+    cevap3: "for",
+    cevap4: "switch...case",
+    cevap5: "class",
+    cevap: "c",
+  },
+  {
+    numara: 7,
+    aciklama:
+      "Hangi JavaScript metodunu kullanarak string ifadeleri birleştirirsiniz?",
+    cevap1: "join()",
+    cevap2: "concat()",
+    cevap3: "slice()",
+    cevap4: "splice()",
+    cevap5: "merge()",
+    cevap: "b",
+  },
+  {
+    numara: 8,
+    aciklama: "Hangisi JavaScript için geçerli bir veri tipi değildir?",
+    cevap1: "Undefined",
+    cevap2: "Symbol",
+    cevap3: "String",
+    cevap4: "NaN",
+    cevap5: "Object",
+    cevap: "c",
+  },
+  {
+    numara: 9,
+    aciklama: "Hangisi doğru bir ifade değildir?",
+    cevap1: "JavaScript bir programlama dilidir.",
+    cevap2: "JavaScript, sadece frontend geliştirme için kullanılır.",
+    cevap3: "JavaScript'te fonksiyonlar birinci sınıf nesnelerdir.",
+    cevap4: "JavaScript ES6'da let ve const anahtar kelimeleri eklenmiştir.",
+    cevap5: "JavaScript'te == operatörü değer ve tip kontrolü yapar.",
+    cevap: "b",
+  },
+  {
+    numara: 10,
+    aciklama:
+      "JavaScript'te bir değişkeni tanımlamak için hangi anahtar kelime kullanılır?",
+    cevap1: "var",
+    cevap2: "const",
+    cevap3: "let",
+    cevap4: "function",
+    cevap5: "return",
     cevap: "a",
   },
 ];
@@ -78,10 +143,43 @@ var countQuestions = sorular.length;
 // localStorage.setItem("lastname", "Smith");
 // // Retrieve
 // document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
+function soruKontrol() {
+  {
+    var ele = document.getElementsByName("cevapName");
+
+    var dictDogruCevap = sorular[indexSoruNumarasi - 1].cevap;
+
+    for (i = 0; i < ele.length; i++) {
+      if (ele[i].checked) {
+        if (dictDogruCevap == cevapList[i]) {
+          // cevap doğru
+          console.log("cevap dogru");
+          document.getElementsByClassName("sorular-button")[
+            indexSoruNumarasi - 1
+          ].style.backgroundColor = "green";
+          puan += 100 / sorular.length;
+          console.log("Puan: " + puan);
+          document.getElementById("puanId").innerHTML = puan.toFixed(2);
+          ele[i].checked = false;
+        } else {
+          console.log("cevap yanlış");
+          document.getElementsByClassName("sorular-button")[
+            indexSoruNumarasi - 1
+          ].style.backgroundColor = "red";
+          console.log("Puan: " + puan);
+          ele[i].checked = false;
+        }
+      }
+    }
+  }
+}
 
 function nextQuestion() {
+  soruKontrol();
+
+  // input clear lamaa
   indexSoruNumarasi++;
-  if (indexSoruNumarasi > sorular.length) {
+  if (indexSoruNumarasi > countQuestions) {
     indexSoruNumarasi = 1; // başa dönüldü
   }
 
@@ -89,6 +187,8 @@ function nextQuestion() {
 }
 
 function backQuestion() {
+  soruKontrol();
+  // input clear lamaa
   indexSoruNumarasi--;
   if (indexSoruNumarasi < 1) {
     indexSoruNumarasi = sorular.length; // başa dönüldü
@@ -96,6 +196,7 @@ function backQuestion() {
 
   screenUpdate(indexSoruNumarasi);
 }
+
 function screenUpdate(soruNumber) {
   // ekranda değişiklikler burda yapılacak
 
@@ -187,6 +288,14 @@ function soruEkleme() {
 
     document.querySelector("#button-container").appendChild(newBtn);
     console.log("dogru cevap: " + girdiDogruCevap);
+    // sağ üst tablo renkler silinmeli ve puan 0 lanmalı
+
+    for (var d = 0; d < sorular.length; d++) {
+      document.getElementsByClassName("sorular-button")[
+        d
+      ].style.backgroundColor = "white";
+    }
+    document.getElementById("puanId").innerHTML = "";
   } else {
     alert("Boş Giriş Yaptınız, Lütfen Tekrar Deneyin");
   }
@@ -199,12 +308,19 @@ function soruCikarma() {
       "Girdiğiniz Sayıda Bir Soru Bulunmamaktadır !! Lütfen Tekrar Deneyinizz"
     );
   } else {
+    for (var e = 0; e < sorular.length; e++) {
+      document.getElementsByClassName("sorular-button")[
+        e
+      ].style.backgroundColor = "white";
+    }
+    document.getElementById("puanId").innerHTML = "";
     // for (var i = 1; i <= sorular.length; i++) {
     //   console.log(sorular[i - 1].numara + ":" + sorular[i - 1].aciklama);
     // }
     // soru çıkartma yapıcaz
-
+    console.log("soru sayisi önce:" + countQuestions);
     sorular.splice(cikarilacakSoruNumarasi - 1, 1); // çıkarttı
+    countQuestions--;
 
     for (
       var indexFor = cikarilacakSoruNumarasi - 1;
@@ -212,6 +328,16 @@ function soruCikarma() {
       indexFor++
     ) {
       sorular[indexFor].numara--;
+      console.log("indexFor:" + indexFor);
     }
+    console.log("soru sayisi sonra:" + countQuestions);
+    const buttonContainer = document.querySelector("#button-container");
+    while (buttonContainer.firstChild) {
+      buttonContainer.removeChild(buttonContainer.firstChild);
+    }
+    if (cikarilacakSoruNumarasi == indexSoruNumarasi) {
+      nextQuestion();
+    }
+    myFunction(countQuestions);
   }
 }
