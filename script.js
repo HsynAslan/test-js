@@ -7,12 +7,12 @@ window.onload = function () {
     // inputCount = document // cevap sayısını buluyor
     //   .getElementById("cevap-id")
     //   .getElementsByTagName("input").length;
-    document.getElementById("radio1").nextSibling.innerHTML =
-      sorular[0].aciklama;
+    // document.getElementById("radio1").nextSibling.innerHTML =
+    //   sorular[0].aciklama;
     console.log(inputCount);
 
     document.getElementById("soru-num-int").innerHTML = 1;
-    document.getElementById("soru").innerHTML = sorular[1].aciklama;
+    document.getElementById("soru").innerHTML = sorular[0].aciklama;
 
     document.getElementById("cevap1HTML").innerHTML = sorular[0].cevap1;
 
@@ -145,6 +145,73 @@ function myFunction(e) {
 }
 
 function soruEkleme() {
-  var girdiSoru = document.getElementById("inputQuestion");
-  console.log(girdiSoru);
+  var girdiSoru = document.getElementById("inputQuestion").value;
+  var girdiA = document.getElementById("inputA").value;
+  var girdiB = document.getElementById("inputB").value;
+  var girdiC = document.getElementById("inputC").value;
+  var girdiD = document.getElementById("inputD").value;
+  var girdiE = document.getElementById("inputE").value;
+  var girdiDogruCevap = document
+    .getElementById("dogruCevap")
+    .value.toLowerCase();
+  //-------------
+  const newObjAdd = {
+    numara: countQuestions + 1,
+    aciklama: girdiSoru,
+    cevap1: girdiA,
+    cevap2: girdiB,
+    cevap3: girdiC,
+    cevap4: girdiD,
+    cevap5: girdiE,
+    cevap: girdiDogruCevap,
+  };
+
+  if (
+    girdiSoru != "" &&
+    girdiA != "" &&
+    girdiB != "" &&
+    girdiC != "" &&
+    girdiD != "" &&
+    girdiE != "" &&
+    girdiDogruCevap != ""
+  ) {
+    sorular.push(newObjAdd);
+    countQuestions++;
+    let newBtn = document.createElement("button");
+    newBtn.innerText = countQuestions;
+    newBtn.classList.add("sorular-button"); // Burada sorular-button sınıfı ekleniyor.
+
+    newBtn.onclick = function () {
+      screenUpdate(countQuestions);
+    };
+
+    document.querySelector("#button-container").appendChild(newBtn);
+    console.log("dogru cevap: " + girdiDogruCevap);
+  } else {
+    alert("Boş Giriş Yaptınız, Lütfen Tekrar Deneyin");
+  }
+}
+
+function soruCikarma() {
+  var cikarilacakSoruNumarasi = document.getElementById("SoruCikarma").value;
+  if (cikarilacakSoruNumarasi > countQuestions || cikarilacakSoruNumarasi < 1) {
+    alert(
+      "Girdiğiniz Sayıda Bir Soru Bulunmamaktadır !! Lütfen Tekrar Deneyinizz"
+    );
+  } else {
+    // for (var i = 1; i <= sorular.length; i++) {
+    //   console.log(sorular[i - 1].numara + ":" + sorular[i - 1].aciklama);
+    // }
+    // soru çıkartma yapıcaz
+
+    sorular.splice(cikarilacakSoruNumarasi - 1, 1); // çıkarttı
+
+    for (
+      var indexFor = cikarilacakSoruNumarasi - 1;
+      indexFor < countQuestions - cikarilacakSoruNumarasi;
+      indexFor++
+    ) {
+      sorular[indexFor].numara--;
+    }
+  }
 }

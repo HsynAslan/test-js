@@ -89,6 +89,10 @@
         <label class="labelText">E Şıkkı ...</label>
         <input type="text" id="inputE" maxlength="100" />
       </div>
+      <div>
+        <label class="labelText">Doğru Şık</label>
+        <input type="text" id="dogruCevap" maxlength="1" />
+      </div>
       <div class="eklemeButton">
         <button onclick="soruEkleme()">Soruyu Kaydet</button>
       </div>
@@ -97,7 +101,7 @@
       <p class="basliklar">Soru Çıkarma</p>
       <label class="labelText mt-5">Çıkarmak İstediğiniz Soruyu Seçiniz</label>
       <input type="number" id="SoruCikarma" name="tentacles" min="1" />
-      <button class="eklemeButton">Çıkart</button>
+      <button class="eklemeButton" onclick="soruCikarma()">Çıkart</button>
     </div>
     <div class="soru-uclu-soru"></div>
     <script src="script.js"></script>
