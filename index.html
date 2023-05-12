@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- 
+    Hüseyin Aslan - 394788
+    Github: https://github.com/HsynAslan/test-js.git
+     -->
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -24,9 +28,12 @@
           <p id="tablo-header" class="mt-3">Puanınız</p>
           <span id="puanId">0</span>
         </div>
-        <div class="time"></div>
+        <div class="time">
+          Kalan Süre: <span id="time-m">00</span>:<span id="time-s">00</span>
+        </div>
       </div>
     </div>
+
     <div class="soru-secmeli-blok">
       <div class="soru-baslik">
         <span class="soru-numarasi" id="soru-num-int">1</span>
@@ -58,6 +65,14 @@
           <p class="cevap-class" id="cevap5HTML">E &nbsp Option E</p>
         </div>
       </div>
+      <!-- <div class="inputTextArea">
+        <textarea
+          id="ansTextAreaInput"
+          name="w3review"
+          rows="4"
+          cols="50"
+        ></textarea>
+      </div> -->
     </div>
 
     <div class="ileri-geri-buttonlar">
@@ -101,6 +116,21 @@
       <div class="eklemeButton">
         <button onclick="soruEkleme()">Soruyu Kaydet</button>
       </div>
+      <!-- <p class="basliklar">Açık Uçlu Soru Ekleme</p>
+      <label class="labelText mb-4">Soru Giriniz...</label>
+      <input type="text" id="inputTextQuestion" maxlength="100" />
+      <div>
+        <label class="labelText">Doğru Şık</label>
+        <textarea
+          id="ansTextArea"
+          name="w3review"
+          rows="4"
+          cols="50"
+        ></textarea>
+      </div>
+      <div class="eklemeButton">
+        <button onclick="textSoruEkleme()">Soruyu Kaydet</button>
+      </div> -->
     </div>
     <div class="soruCikar">
       <p class="basliklar">Soru Çıkarma</p>

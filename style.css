@@ -2,7 +2,7 @@
   border: 5px;
   width: 70%;
   height: auto;
-  background-color: bisque;
+  background-color: #99ddff;
   margin-top: 7%;
   border: solid 1px;
   margin-left: 1%;
@@ -39,9 +39,10 @@
   position: fixed;
   top: 0;
   right: 0;
-  background-color: antiquewhite;
+  background-color: #0088;
   width: 20%;
   height: auto;
+  z-index: 9999;
 }
 #tablo-header {
   font-weight: bold;
@@ -72,10 +73,11 @@
   flex-wrap: wrap;
 }
 .soru-ekleme-cikarma {
-  background-color: antiquewhite;
+  background-color: #b3e6ff;
   margin-bottom: 1%;
   padding-bottom: 1%;
   width: 100;
+  z-index: 0;
 }
 
 .basliklar {
@@ -93,7 +95,7 @@
   margin-left: 90%;
 }
 .soruCikar {
-  background-color: antiquewhite;
+  background-color: #b3e6ff;
   margin-bottom: 1%;
   padding-bottom: 1%;
   width: 100;
@@ -104,4 +106,17 @@
   justify-content: center;
   font-size: x-large;
   margin-top: -5%;
+}
+.time {
+  display: flex;
+  justify-content: center;
+  margin-top: 2%;
+  border-top: solid green 2px;
+  padding-top: 5%;
+}
+.inputTextArea {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2%;
+  margin-right: 2%;
 }
