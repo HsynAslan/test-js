@@ -120,3 +120,42 @@
   margin-bottom: 2%;
   margin-right: 2%;
 }
+.soru-kaydet-btn {
+  background-color: #158cba;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+  width: auto;
+}
+
+.soru-kaydet-btn:hover {
+  background-color: #0f638a;
+}
+.labelTextCikarma {
+  margin-left: 2%;
+
+  margin-bottom: 5px;
+}
+#SoruCikarma {
+  width: 80px;
+  height: 40px;
+}
+.border-radius-right {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.border-radius-left {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.border-radius-all {
+  border-radius: 5px;
+}

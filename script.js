@@ -41,18 +41,26 @@ window.onload = function () {
     var minute = minuteStart;
     var second = secondStart;
 
-    if (minuteStart < 10 && minuteStart > 0) {
-      // minuteStart = "0" + minuteStart;
-      minute = "0" + minuteStart;
-    } else if (secondStart < 10 && secondStart > 0) {
-      // secondStart = "0" + secondStart;
-      second = "0" + secondStart;
-    } else if (minuteStart == 0) {
-      // minuteStart = "00";
-      minute = "00";
+    // if (minuteStart < 10 && minuteStart > 0) {
+    //   // minuteStart = "0" + minuteStart;
+    //   minute = "0" + minuteStart;
+    // } else if (secondStart < 10 && secondStart > 0) {
+    //   // secondStart = "0" + secondStart;
+    //   second = "0" + secondStart;
+    // } else if (minuteStart == 0) {
+    //   // minuteStart = "00";
+    //   minute = "00";
+    // }
+    if (minute < 10) {
+      document.getElementById("time-m").innerHTML = "0" + minute;
+      document.getElementById("time-s").innerHTML = second;
+    } else if (second < 10) {
+      document.getElementById("time-m").innerHTML = minute;
+      document.getElementById("time-s").innerHTML = "0" + second;
+    } else {
+      document.getElementById("time-m").innerHTML = minute;
+      document.getElementById("time-s").innerHTML = second;
     }
-    document.getElementById("time-m").innerHTML = minute;
-    document.getElementById("time-s").innerHTML = second;
   }
   function startTime() {
     if (secondStart == 0 && minuteStart != 0) {
@@ -334,7 +342,7 @@ function nextQuestion() {
 }
 
 function backQuestion() {
-  //soruKontrol();
+  // soruKontrol();
   // input clear lamaa
 
   indexSoruNumarasi--;
@@ -571,6 +579,8 @@ function soruEkleme() {
   } else {
     alert("Boş Giriş Yaptınız, Lütfen Tekrar Deneyin");
   }
+
+  cevaplar = [];
 }
 
 function soruCikarma() {
@@ -614,10 +624,10 @@ function soruCikarma() {
     minuteStart = 25;
     secondStart = 00;
   }
+  cevaplar = [];
 }
 // puan sürekli artıyor - çözüldü
 // save input - çözüldü
 // time - çözüldü
 // soru ekleyince - çözüldü
-// dict ->  local storage
-// açık uçlu soru
+// dict ->  local storage - eksik
