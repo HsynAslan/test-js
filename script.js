@@ -186,10 +186,12 @@ var countQuestions = sorular.length;
 // localStorage.setItem("lastname", "Smith");
 // // Retrieve
 // document.getElementById("demo").innerHTML = localStorage.getItem("lastname");
+
 function soruKontrol() {
+  var flagSpaceAns = false;
   var indexLow = indexSoruNumarasi--;
   var indexUp = indexSoruNumarasi++;
-  // HATALI ÇALIŞIYOR
+
   {
     var ele = document.getElementsByName("cevapName");
 
@@ -198,6 +200,7 @@ function soruKontrol() {
     for (i = 0; i < ele.length; i++) {
       // onceden dogru şimdi yanlış olana girmiyor
       if (ele[i].checked) {
+        flagSpaceAns = true;
         console.log("cevaplar: " + cevaplar);
         if (dictDogruCevap == cevapList[i]) {
           // cevap doğru ise
@@ -281,6 +284,11 @@ function soruKontrol() {
               cevaplar[indexSoruNumarasi - 1] = cevapList[i];
               // yine doğru ise devam bişe yapma
               console.log("cevaplar: " + cevaplar);
+            } else if (cevaplar[indexSoruNumarasi - 1] == "0") {
+              document.getElementsByClassName("sorular-button")[
+                indexSoruNumarasi - 1
+              ].style.backgroundColor = "red";
+              cevaplar[indexSoruNumarasi - 1] = cevapList[i];
             } else {
               console.log("onceden de yanlıştı şimdi de yanlış");
               // dogruya dondü -> puan arttır
@@ -303,6 +311,11 @@ function soruKontrol() {
           // ele[i].checked = false;
         }
       }
+    }
+    //if kontolru
+    if (flagSpaceAns == false) {
+      // boş cevap göndermiştir
+      cevaplar.push("0");
     }
   }
 }
@@ -339,11 +352,17 @@ function saveAnswer() {
     }
   } else {
     var prevAns = cevaplar[indexSoruNumarasi - 1]; // bu soruya onceden verilmiş cevaptır
+    console.log("bu soruya onceden verilmiş cevaptır: " + prevAns);
     for (var i = 0; i < cevapList.length; i++) {
       // i ->  0 1 2 3 4
       if (cevapList[i] == prevAns) {
+        // console.log("cevapList[i]: " + cevapList[i]);
         // önceki şıkkı indexledik
         document.getElementsByName("cevapName")[i].checked = true;
+      } else if (prevAns == "0") {
+        for (var a = 0; a < cevapList.length; a++) {
+          document.getElementsByName("cevapName")[a].checked = false;
+        }
       }
     }
   }
@@ -351,7 +370,7 @@ function saveAnswer() {
 
 function screenUpdate(soruNumber) {
   // ekranda değişiklikler burda yapılacak
-
+  saveAnswer();
   document.getElementById("soru-num-int").innerHTML = soruNumber;
   document.getElementById("soru").innerHTML = sorular[soruNumber - 1].aciklama;
 
@@ -422,6 +441,27 @@ function myFunction(e) {
     newBtn.classList.add("sorular-button"); // Burada sorular-button sınıfı ekleniyor.
 
     newBtn.onclick = function () {
+      indexSoruNumarasi = i;
+      // aradaki yerlere boşluk eklenmeli idi
+      console.log("--- önce cevaplar ---");
+      for (let a of cevaplar) {
+        console.log(a);
+      }
+      console.log("--- --- --- ---");
+      console.log("index Numarasi: " + indexSoruNumarasi);
+      console.log("--- --- --- ---");
+      var boslukAdedi = indexSoruNumarasi - 1 - cevaplar.length;
+      for (
+        var indexBoslukKoyma = cevaplar.length + 1;
+        indexBoslukKoyma < indexSoruNumarasi;
+        indexBoslukKoyma++
+      ) {
+        cevaplar.push("0");
+      }
+      console.log("--- sonra cevaplar ---");
+      for (let a of cevaplar) {
+        console.log(a);
+      }
       screenUpdate(i);
     };
 
@@ -512,8 +552,8 @@ function soruEkleme() {
     }
     console.log("--*****----");
     newBtn.onclick = function () {
-      screenUpdate(countQuestions);
       indexSoruNumarasi = countQuestions;
+      screenUpdate(countQuestions);
     };
 
     document.querySelector("#button-container").appendChild(newBtn);
